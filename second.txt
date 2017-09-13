@@ -2,6 +2,8 @@ nclude <stdio.h>
 #include <math.h>
 
 #define pi  3.14
+// define is a global variable and will not be changed in memory
+/enter space for better coding style
 
 void circle_area( int radius );
 void loss_profit( int bought, int sold);
