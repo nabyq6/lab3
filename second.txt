@@ -1,0 +1,157 @@
+nclude <stdio.h>
+#include <math.h>
+
+#define pi  3.14
+
+void circle_area( int radius );
+void loss_profit( int bought, int sold);
+void calculator( char operator);
+
+
+
+int main(void) {
+    
+    // Main menu
+    int choice;
+    int rad;
+    int cost;
+    int soldprice;
+    char operator;
+    
+    
+    printf("Enter\n 1 if you would like to compute the area of a circle\n 2 if you would like to see if you made a  profit/loss on a sell\n  3 if you would like use the calculator\n");
+    scanf("%d", &choice);
+    while( choice > 3 || choice < 1)
+    {
+        printf(" Choice not valid, Please try again:\n Enter\n 1 if you would like to compute the area of a circle\n 2 if you would like to see if you made a  profit/loss on a sell\n  3 if you would like use the calculator\n");
+        scanf("%d", &choice);
+    }
+    getchar();
+    switch(choice)
+    {
+                    // Area of a circle code
+            case 1:
+        
+                printf("Enter in the radius of the circle: ");
+                scanf("%d",&rad);
+                while( rad < 0)
+                {
+                    printf("Enter in a positive radius of the circle: ");
+                    scanf("%d",&rad);
+                }
+            
+                circle_area(rad);
+            break;
+            
+                // profit or loss choice
+            case 2:
+            
+                printf("Enter the cost of the item:");
+                scanf("%d", &cost);
+                while( cost < 0)
+                {
+                    printf("Enter a postive cost of the item:");
+                    scanf("%d", &cost);
+                    
+                }
+                printf("Enter price the item sold for:");
+                scanf("%d", &soldprice);
+                while( soldprice < 0)
+                {
+                    printf("Enter a positive price the item sold for:");
+                    scanf("%d", &soldprice);
+                }
+                loss_profit( cost, soldprice);
+            break;
+            
+                // calculator function
+            case 3:
+                printf("Enter the Operator in +, -, /, *:");
+                operator = getchar();
+                getchar();
+            //printf("%c", operator);
+                while( operator != '+' && operator != '-' && operator != '/' && operator != '*')
+                {
+                    printf("Inncorrect Operator choice: Enter the Operator in +, -, /, *:");
+                    operator = getchar();
+                    getchar();
+                }
+                    calculator(operator);
+            
+            break;
+            
+            
+            
+            
+            
+            
+            
+            
+    }
+    
+    printf("\n");
+    
+    
+}
+// calculate area function
+void circle_area( int radius )
+{
+    int area;
+    area = pi * pow( radius, 2);
+    printf(" The area of the circle is %d", area);
+    
+}
+// determination of a loss or profit
+
+void loss_profit( int bought, int sold )
+{
+    int difference;
+    if( bought > sold )
+    {
+        difference = bought - sold;
+        printf("A loss of %d occured from the sale\n", difference);
+    }
+    else
+    {
+        difference = sold - bought;
+        printf("A profit of %d occured from the sale\n", difference);
+    }
+
+}
+// calculator function
+void calculator( char operator)
+{
+    int first_Num;
+    int second_Num;
+    
+    
+    printf("Enter the Operand1\n");
+    scanf("%d", &first_Num);
+    printf("Enter the Operand2\n");
+    scanf("%d", &second_Num);
+    if( operator == '/' )
+    {
+        while( second_Num == 0)
+        {
+            printf("Cannot divide by zero: Enter the Operand2\n");
+            scanf("%d", &second_Num);
+        }
+    }
+    switch( operator)
+    {
+    
+        case '-':   printf(" %d %c %d = %d ", first_Num, operator, second_Num, first_Num-second_Num);
+            break;
+            
+        case '+':  printf(" %d %c %d = %d ", first_Num, operator, second_Num, first_Num+second_Num);
+            break;
+        
+        case '/':
+                    printf(" %d %c %d = %d ", first_Num, operator, second_Num, first_Num/second_Num);
+            break;
+        
+        case '*':  printf(" %d %c %d = %d ", first_Num, operator, second_Num, first_Num*second_Num);
+            break;
+    }
+}
+
