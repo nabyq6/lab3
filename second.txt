@@ -1,6 +1,7 @@
 nclude <stdio.h>
 #include <math.h>
 
+#define e 100
 #define pi  3.14
 // define is a global variable and will not be changed in memory
 /enter space for better coding style
